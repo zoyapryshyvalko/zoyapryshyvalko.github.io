@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Интерактивная самооценка жизненных событий за последние 12 месяцев">
+<title>События и перемены за последний год</title>
+<style>
+:root{--ink:#272431;--muted:#6d6877;--paper:#fbf8f6;--card:#fff;--line:#e9e1df;--accent:#865b72;--accent-dark:#684256;--accent-soft:#f3e8ed;--sage:#eaf0e9;--gold:#f5eedc;--shadow:0 14px 38px rgba(45,31,39,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--accent-dark)}.wrap{max-width:920px;margin:0 auto;padding:32px 20px 72px}.hero{padding:42px clamp(22px,6vw,64px);border-radius:28px;background:linear-gradient(135deg,#f3e8ed,#f7f0e8 70%,#eaf0e9);margin-bottom:24px}.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dark);font-weight:700}.hero h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.35rem);line-height:1.12;margin:.45rem 0 1rem;max-width:700px}.hero p{max-width:720px;margin:.75rem 0;color:#49434d}.intro-card,.event,.result-card,.note{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.intro-card{padding:24px clamp(20px,4vw,36px);margin-bottom:24px}.intro-card h2,.section-title{font-family:Georgia,serif;font-size:1.55rem;margin:0 0 10px}.small{font-size:.9rem;color:var(--muted)}.guide{padding:15px 18px;background:#f8f4f2;border-radius:12px;margin:18px 0 0}.guide strong{color:var(--accent-dark)}.progress-wrap{position:sticky;top:0;z-index:5;margin:0 -4px 24px;padding:11px 14px;background:rgba(251,248,246,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}.progress-label{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:6px}.progress{height:7px;border-radius:9px;background:#e9e1df;overflow:hidden}.progress span{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}.section{margin:32px 0}.event-list{display:grid;gap:12px}.event{padding:18px 20px;box-shadow:none}.event-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.event h3{font-size:1.04rem;line-height:1.35;margin:0 0 6px}.score{white-space:nowrap;color:var(--accent-dark);font-weight:700;font-size:.9rem;background:var(--accent-soft);padding:4px 9px;border-radius:999px}.event p{margin:0;color:#59545e;font-size:.94rem}.choices{display:flex;gap:9px;margin-top:13px}.choice{border:1px solid #d8cdd2;background:white;color:var(--ink);padding:7px 18px;border-radius:999px;font:inherit;font-size:.9rem;cursor:pointer}.choice:hover{border-color:var(--accent)}.choice[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:white}.countbox{display:none;align-items:center;gap:10px;margin-top:12px;font-size:.9rem;color:var(--muted)}.countbox.visible{display:flex}.countbox input{width:70px;border:1px solid var(--line);border-radius:8px;padding:7px;font:inherit;text-align:center}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0}.primary,.secondary,.consult{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;border:0;border-radius:999px;padding:12px 22px;font:inherit;font-weight:650;cursor:pointer}.primary,.consult{background:var(--accent);color:white}.primary:hover,.consult:hover{background:var(--accent-dark);color:white}.secondary{background:transparent;border:1px solid var(--line);color:var(--ink)}.result{display:none;scroll-margin-top:90px}.result.visible{display:block}.result-card{padding:clamp(22px,5vw,42px);border-top:6px solid var(--accent)}.result-kicker{color:var(--accent-dark);font-weight:700}.total{font-family:Georgia,serif;font-size:clamp(3.4rem,9vw,5.5rem);line-height:1;margin:8px 0 12px}.band{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--gold);font-size:.88rem;font-weight:650}.result-card h2{font-family:Georgia,serif;font-size:1.8rem;margin:16px 0 8px}.result-card p{max-width:720px}.selected{margin:22px 0;padding:0;list-style:none;border-top:1px solid var(--line)}.selected li{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line)}.selected li span:last-child{white-space:nowrap;font-weight:650}.note{padding:17px 20px;margin-top:14px;background:#f8f4f2;box-shadow:none;color:var(--muted);font-size:.9rem}.result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.foot{margin-top:30px;color:var(--muted);font-size:.85rem}.error{display:none;color:#9a2f48;margin-top:8px}.error.visible{display:block}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bd90a5;outline-offset:3px}@media(max-width:620px){.wrap{padding:16px 13px 48px}.hero{border-radius:20px;padding:29px 22px}.event{padding:16px}.event-top{display:block}.score{display:inline-block;margin-bottom:8px}.selected li{font-size:.9rem}}
+#testArea{display:none}#testArea.started{display:block}.primary:disabled{opacity:.45;cursor:not-allowed}.start-row{margin-top:22px}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero">
+<div class="eyebrow">Самооценка жизненных перемен</div>
+<h1>Что происходило в вашей жизни за последний год?</h1>
+<p>Если в этом году вы стали чувствовать себя хуже, бывает трудно понять, с чем это связано. Мы можем преуменьшать и количество событий, и то, насколько сильно каждое из них повлияло на нас. Некоторые события кажутся незначительными, особенно когда мы уже привыкли с ними справляться.</p>
+<p>Этот тест поможет вспомнить события последнего года и посмотреть, совпало ли ухудшение самочувствия с периодом, когда перемен стало больше. Он не определит причину вашего состояния, но поможет оценить, сколько изменений могло потребовать от вас сил и адаптации.</p>
+</header>
+<section class="intro-card" aria-labelledby="scale-title">
+<h2 id="scale-title">Зачем нужна эта шкала?</h2>
+<p>Шкалу жизненных событий в 1967 году разработали психиатры Томас Холмс и Ричард Рей. Они составили список событий и присвоили каждому баллы, чтобы изучать связь между жизненными переменами и здоровьем.</p>
+<p>Баллы показывают условную нагрузку, связанную с изменениями. В списке есть и приятные события, потому что они тоже могут требовать адаптации. Результат не является диагнозом и не доказывает, что именно события стали причиной ухудшения самочувствия.</p>
+</section>
+<section class="intro-card" aria-labelledby="how-title">
+<h2 id="how-title">Как пройти тест</h2>
+<p>Отметьте события, которые произошли с вами за последние 12 месяцев. Выберите «Да» или «Нет». Если отдельное событие повторялось, укажите число случаев. Длительное событие, например болезнь или изменение режима сна, учитывайте один раз.</p>
+<p>В конце вы увидите сумму баллов и список отмеченных событий. Результат не является диагнозом и не доказывает, что именно эти события стали причиной изменений в самочувствии.</p>
+<div class="guide"><strong>Важно:</strong> отмечайте только то, что подходит вашему опыту. Если формулировка кажется вам неясной, ориентируйтесь на пояснение под пунктом.</div>
+<div class="start-row"><button class="primary" type="button" id="startTest">Начать тест</button></div>
+</section>
+<div id="testArea">
+<div class="progress-wrap" aria-live="polite"><div class="progress-label"><span>Отмечено ответов</span><span id="progressText">0 из 43</span></div><div class="progress"><span id="progressBar"></span></div></div>
+<form id="stressForm">
+<div id="questions"></div>
+<p id="formError" class="error" role="alert">Отметьте «Да» или «Нет» в каждом пункте, чтобы увидеть результат.</p>
+<div class="actions"><button class="primary" id="showResult" type="submit" disabled>Посмотреть результат</button><button class="secondary" type="reset">Очистить ответы</button></div>
+</form>
+</div>
+<section id="result" class="result" aria-live="polite" aria-labelledby="resultTitle">
+<div class="result-card">
+<div class="result-kicker">Ваш результат</div>
+<div class="total" id="totalScore">0</div>
+<div id="scoreBand" class="band"></div>
+<h2 id="resultTitle"></h2>
+<p id="resultText"></p>
+<ul id="selectedEvents" class="selected"></ul>
+<div class="note">Баллы показывают сумму событий по этой шкале. Они не ставят диагноз и не определяют, насколько тяжёлым было событие именно для вас.</div>
+<div class="result-actions"><a class="consult" href="https://www.instagram.com/prishizojka/" target="_blank" rel="noopener">Написать мне в Instagram @prishizojka</a><button class="secondary" type="button" id="restart">Пройти тест заново</button></div>
+</div>
+</section>
+<footer class="foot">Тест работает в вашем браузере. Ответы не отправляются и не сохраняются. Шкала Холмса и Рея является ориентиром для размышления, а не диагностическим инструментом.</footer>
+</main>
+<script>
+const items=[
+["Смерть супруга или партнёра",100,"За последний год умер ваш супруг или партнёр."],
+["Развод",76,"За последний год был официально расторгнут ваш брак."],
+["Раздельное проживание или расставание",65,"Вы с супругом или партнёром стали жить отдельно или завершили отношения без официального развода."],
+["Заключение в тюрьму",63,"Учитывается лишение свободы. Штрафы и мелкие нарушения закона отмечаются отдельно."],
+["Смерть близкого родственника",63,"Например, родителя, ребёнка, брата или сестры. Если умерло несколько близких родственников, укажите число случаев."],
+["Травма или болезнь",53,"Серьёзная травма или болезнь заметно изменила привычную жизнь. Считайте отдельные события, а не дни болезни."],
+["Брак",50,"За последний год вы вступили в брак."],
+["Потеря работы",47,"Вы потеряли работу, например, вас уволили или закрылась организация. Если это происходило несколько раз, укажите число случаев."],
+["Примирение с супругом или партнёром",45,"После расставания или серьёзного кризиса вы решили восстановить отношения."],
+["Выход на пенсию",45,"Вы завершили работу или перешли к жизни на пенсии."],
+["Изменение здоровья близкого человека",44,"Состояние члена семьи заметно изменилось и повлияло на вашу жизнь. Учитывайте значимое изменение, а не каждый визит к врачу."],
+["Беременность",40,"Беременность началась за последний год."],
+["Трудности в сексуальной жизни",39,"Заметно изменились желание, возбуждение, чувствительность или возможность заниматься сексом так, как раньше. Длительные трудности учитывайте один раз."],
+["Пополнение семьи",39,"В семье появился ребёнок или другой член семьи, например после рождения, усыновления или переезда родственника в дом."],
+["Существенные изменения в работе или бизнесе",39,"Заметно изменились условия, организация или объём ответственности в вашем деле. Обычная загруженная неделя не считается."],
+["Изменение финансового положения",38,"Доходы или расходы заметно выросли или снизились и повлияли на привычный уровень жизни."],
+["Смерть близкого друга",37,"За последний год умер близкий вам друг. Если таких случаев было несколько, укажите число."],
+["Переход на другую профессию",36,"Вы начали работать в другой профессиональной сфере. Смена работодателя сама по себе не считается."],
+["Изменение частоты ссор с супругом или партнёром",35,"Ссор стало заметно больше или меньше, чем обычно. Отметьте изменение общего характера отношений, а не каждую ссору."],
+["Крупная ипотека или заём",31,"Вы взяли ипотеку или другой крупный заём, который заметно повлиял на ваши финансы."],
+["Потеря жилья или взыскание долга",30,"Возникла угроза потерять жильё или имущество из-за долга. Обычные выплаты по кредиту не считаются."],
+["Изменение обязанностей на работе",29,"Ваша роль заметно изменилась, например после повышения, понижения в должности или перехода на новую позицию."],
+["Ребёнок уехал из дома",29,"Сын или дочь стали жить отдельно, например ради учёбы, работы или самостоятельной жизни."],
+["Трудности с родственниками супруга или партнёра",29,"Возник серьёзный конфликт или обострились давние разногласия. Длительную ситуацию учитывайте один раз."],
+["Важное личное достижение",28,"Вы завершили значимый проект, получили признание или достигли важной для себя цели."],
+["Супруг или партнёр начал или прекратил работать",26,"Партнёр начал или завершил работу. Если оба изменения произошли в течение года, укажите два случая."],
+["Начало или окончание учёбы",26,"Вы поступили, завершили обучение или прекратили учёбу."],
+["Изменение условий жизни",25,"Например, дома начался большой ремонт или заметно ухудшились условия в районе. Сам переезд отмечается отдельно."],
+["Изменение личных привычек",24,"Вы заметно изменили устойчивую привычку или распорядок, например бросили курить или пересмотрели повседневный образ жизни. Длительную перемену учитывайте один раз."],
+["Проблемы с начальником",23,"Возник конфликт или длительные трудности во взаимодействии с руководителем. Не считайте каждый спор отдельно."],
+["Изменение рабочего графика или условий труда",20,"Например, вы перешли на сменный график, стали работать ночью или существенно изменили место и условия работы."],
+["Переезд",20,"Вы сменили жильё. Это может быть переезд из одной квартиры или дома в другие, в том же городе или в другую страну. Каждый отдельный переезд можно учесть отдельно."],
+["Смена школы или учебного заведения",20,"Вы или ваш ребёнок перешли в другую школу, колледж или другое учебное заведение."],
+["Изменение досуга",19,"Заметно изменился обычный вид или объём занятий в свободное время. Например, вы бросили привычное хобби или начали регулярно заниматься спортом. Отдельная прогулка или поход в кафе не считаются."],
+["Изменение религиозной активности",19,"Вы стали заметно чаще или реже участвовать в религиозной жизни либо начали или прекратили такую практику."],
+["Изменение социальной активности",19,"Вы стали заметно чаще или реже встречаться с друзьями, посещать мероприятия или участвовать в общественной жизни."],
+["Небольшой заём",17,"Вы взяли потребительский кредит или другой заём, который не считаете крупным. Учитывайте оформление нового займа, а не регулярные платежи."],
+["Изменение привычек сна",16,"Режим или продолжительность сна заметно и устойчиво изменились. Длительную перемену учитывайте один раз."],
+["Изменение частоты семейных встреч",15,"Вы стали заметно чаще или реже встречаться с родственниками. Отмечайте изменение привычного ритма, а не каждую встречу."],
+["Изменение привычек питания",15,"Вы заметно и надолго изменили режим, количество или состав питания. Отдельные необычные приёмы пищи не считаются."],
+["Отпуск",13,"Учитывайте отдельные поездки или периоды отдыха. Если за год вы отдыхали несколько раз, укажите число отпусков."],
+["Крупный праздник",12,"Например, Рождество или Новый год. Отметьте пункт, если подготовка или празднование заметно изменили расходы, обязанности или привычный распорядок."],
+["Незначительное нарушение закона",11,"Например, штраф за нарушение правил дорожного движения. Если отдельных случаев было несколько, укажите их число."]
+];
+const groups={"Семья и отношения":[0,1,2,3,4,5,6,8,10,11,12,13,16,18,22,23],"Работа, жильё и деньги":[7,9,14,15,17,19,20,21,24,25,26,27,28,29,30,31,32,35,42],"Привычки и повседневная жизнь":[33,34,36,37,38,39,40,41]};
+const questions=document.getElementById('questions');
+function render(){let idx=0;for(const [group,indices] of Object.entries(groups)){const section=document.createElement('section');section.className='section';const title=document.createElement('h2');title.className='section-title';title.textContent=group;section.append(title);const list=document.createElement('div');list.className='event-list';for(const i of indices){const [name,score,desc]=items[i];const card=document.createElement('article');card.className='event';card.dataset.index=i;card.innerHTML=`<div class="event-top"><div><span class="score">${score} баллов</span><h3>${name}</h3></div></div><p>${desc}</p><div class="choices" role="group" aria-label="${name}"><button class="choice" type="button" data-answer="yes" aria-pressed="false">Да</button><button class="choice" type="button" data-answer="no" aria-pressed="false">Нет</button></div><label class="countbox">Сколько отдельных случаев за последний год? <input type="number" min="1" max="99" step="1" value="1" aria-label="Количество случаев"></label>`;list.append(card);idx++}section.append(list);questions.append(section)}
+questions.addEventListener('click',e=>{const btn=e.target.closest('.choice');if(!btn)return;const card=btn.closest('.event');card.dataset.answer=btn.dataset.answer;card.querySelectorAll('.choice').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));const count=card.querySelector('.countbox');count.classList.toggle('visible',btn.dataset.answer==='yes');updateProgress();document.getElementById('formError').classList.remove('visible');});
+}
+function updateProgress(){const answered=document.querySelectorAll('#questions .event[data-answer]').length;document.getElementById('progressText').textContent=`${answered} из 43`;document.getElementById('progressBar').style.width=`${answered/43*100}%`;document.getElementById('showResult').disabled=answered!==43}
+function resultCopy(score){if(score<150)return{band:'До 149 баллов',title:'Сумма событий ниже условного ориентира шкалы',text:'Это не означает, что вы не испытываете стресс. Шкала учитывает только события из списка и не оценивает ваше состояние напрямую.'};if(score<300)return{band:'От 150 до 299 баллов',title:'За последний год произошло много перемен',text:'Подумайте, какие из них требовали от вас больше всего сил и какая поддержка вам сейчас нужна.'};return{band:'300 баллов и выше',title:'Сумма событий высокая по условным ориентирам шкалы',text:'Сам результат не говорит о диагнозе и не объясняет причину вашего самочувствия. Он может стать поводом внимательнее отнестись к своему состоянию и обсудить накопившиеся перемены со специалистом.'}}
+document.getElementById('startTest').addEventListener('click',()=>{const area=document.getElementById('testArea');area.classList.add('started');document.querySelector('#questions .section')?.scrollIntoView({behavior:'smooth',block:'start'})});
+document.getElementById('stressForm').addEventListener('submit',e=>{e.preventDefault();const cards=[...document.querySelectorAll('.event')];if(cards.some(c=>!c.dataset.answer)){document.getElementById('formError').classList.add('visible');document.querySelector('.event:not([data-answer])')?.scrollIntoView({behavior:'smooth',block:'center'});return}let total=0;const chosen=[];for(const c of cards){if(c.dataset.answer!=='yes')continue;const i=Number(c.dataset.index);const count=Math.max(1,Math.min(99,Number(c.querySelector('input').value)||1));const points=items[i][1]*count;total+=points;chosen.push({name:items[i][0],points,count})}const copy=resultCopy(total);document.getElementById('totalScore').textContent=total;document.getElementById('scoreBand').textContent=copy.band;document.getElementById('resultTitle').textContent=copy.title;document.getElementById('resultText').textContent=copy.text;const ul=document.getElementById('selectedEvents');ul.replaceChildren();for(const item of chosen){const li=document.createElement('li');const left=document.createElement('span');left.textContent=item.count>1?`${item.name} × ${item.count}`:item.name;const right=document.createElement('span');right.textContent=`${item.points} баллов`;li.append(left,right);ul.append(li)}const result=document.getElementById('result');result.classList.add('visible');result.scrollIntoView({behavior:'smooth',block:'start'})});
+document.getElementById('stressForm').addEventListener('reset',()=>{setTimeout(()=>{document.querySelectorAll('.event').forEach(c=>{delete c.dataset.answer;c.querySelectorAll('.choice').forEach(b=>b.setAttribute('aria-pressed','false'));c.querySelector('.countbox').classList.remove('visible')});updateProgress();document.getElementById('result').classList.remove('visible');document.getElementById('formError').classList.remove('visible')},0)});
+document.getElementById('restart').addEventListener('click',()=>{document.getElementById('stressForm').reset();window.scrollTo({top:0,behavior:'smooth'})});
+render();
+</script>
+</body>
+</html>
